@@ -11,7 +11,7 @@ import profileHandler from "./controllers/profile.js";
 // const app = new Clarifai.App({
 // 	apiKey: "eea810b65864447c9ac8eb2fe6d540e2",
 // });
-
+console.log(process.env);
 const db = knex({
 	client: "pg",
 	connection: {
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-	res.send("success");
+	res.send("sucess - process.env");
 });
 
 app.post("/signin", (req, res) => {
@@ -47,6 +47,6 @@ app.put("/image", (req, res) => {
 	imageHandler(req, res, db);
 });
 
-app.listen(process.env.PO || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 	console.log(`app is running on port ${process.env.PORT} `);
 });
