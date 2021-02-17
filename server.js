@@ -15,10 +15,8 @@ console.log(process.env);
 const db = knex({
 	client: "pg",
 	connection: {
-		host: "postgresql-pointy-07862",
-		user: "postgres",
-		password: "5EuroBit",
-		database: "facerecognition",
+		connectionString: process.env.DATABASE_URL,
+		ssl: true,
 	},
 });
 
